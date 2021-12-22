@@ -60,4 +60,9 @@ public class JooqTutorialController {
     public int deleteCountryById(@PathVariable("id") int id){
         return jooqTutorialService.deleteCountryById(id);
     }
+
+    @PutMapping("/update/country")
+    public int updateCountryById(@RequestBody Country country){
+        return jooqTutorialService.updateCountry(country);
+    }
 }
