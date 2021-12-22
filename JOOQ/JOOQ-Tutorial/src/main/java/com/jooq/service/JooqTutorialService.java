@@ -89,4 +89,26 @@ public class JooqTutorialService {
             return result;
         });
     }
+
+    public int deleteCountryById(int id){
+        return dslContext.transactionResult(configuration ->
+        {
+            int result = 0;
+
+            result += DSL.using(configuration)
+                    .delete(UNREPRESENTATIVE)
+                    .where(UNREPRESENTATIVE.FK_COUNTRY_ID.eq(id))
+                    .execute();
+
+//            Test transaction by throwing an exception
+//            result = result/result;
+            
+            result += DSL.using(configuration)
+                    .delete(COUNTRY)
+                    .where(COUNTRY.PK_COUNTRY_ID.eq(id))
+                    .execute();
+
+            return result;
+        });
+    }
 }

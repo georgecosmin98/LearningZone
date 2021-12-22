@@ -55,4 +55,9 @@ public class JooqTutorialController {
     public int saveCountry(@RequestBody CountryRepresentativeMapper countryRepresentativeMapper){
         return jooqTutorialService.saveCountryThenSaveUnrepresentative(countryRepresentativeMapper.getCountry(), countryRepresentativeMapper.getUnrepresentative());
     }
+
+    @DeleteMapping("/delete/countryById/{id}")
+    public int deleteCountryById(@PathVariable("id") int id){
+        return jooqTutorialService.deleteCountryById(id);
+    }
 }
