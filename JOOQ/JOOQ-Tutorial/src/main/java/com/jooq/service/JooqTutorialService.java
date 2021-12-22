@@ -5,9 +5,11 @@ import com.jooq.jooq.tables.pojos.Country;
 import com.jooq.jooq.tables.pojos.Unrepresentative;
 import com.jooq.model.InnerJoinMapper;
 import org.jooq.DSLContext;
-import org.jooq.Result;
+import org.jooq.impl.DSL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import static com.jooq.jooq.Tables.*;
 
 import java.util.List;
 
@@ -49,5 +51,42 @@ public class JooqTutorialService {
                 .rightJoin(Tables.UNREPRESENTATIVE)
                 .on(Tables.COUNTRY.PK_COUNTRY_ID.eq(Tables.UNREPRESENTATIVE.FK_COUNTRY_ID))
                 .fetch().into(InnerJoinMapper.class);
+    }
+
+    public int saveCountry(Country country){
+        return dslContext.transactionResult(configuration ->
+        {
+            int result;
+            result = DSL.using(configuration)
+                    .insertInto(COUNTRY,COUNTRY.NAME,COUNTRY.OFFICIALLANG,COUNTRY.SIZE)
+                    .values(country.getName(), country.getOfficiallang(),country.getSize())
+                    .returning()
+                    .execute();
+            return result;
+        });
+    }
+
+    public int saveCountryThenSaveUnrepresentative(Country country, Unrepresentative unrepresentative){
+        return dslContext.transactionResult(configuration ->
+        {
+            int result = 0;
+            result += DSL.using(configuration)
+                    .insertInto(COUNTRY,COUNTRY.NAME,COUNTRY.OFFICIALLANG,COUNTRY.SIZE)
+                    .values(country.getName(), country.getOfficiallang(),country.getSize())
+                    .returning()
+                    .execute();
+
+//  Throwing exception to be able to verify if transaction work
+            result --;
+            result = result/0;
+
+            result += DSL.using(configuration)
+                    .insertInto(UNREPRESENTATIVE,UNREPRESENTATIVE.NAME,UNREPRESENTATIVE.GENDER,UNREPRESENTATIVE.FK_COUNTRY_ID)
+                    .values(unrepresentative.getName(), unrepresentative.getGender(), unrepresentative.getFkCountryId())
+                    .returning()
+                    .execute();
+
+            return result;
+        });
     }
 }

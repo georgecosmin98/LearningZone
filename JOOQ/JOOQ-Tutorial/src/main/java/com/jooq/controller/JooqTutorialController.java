@@ -2,13 +2,12 @@ package com.jooq.controller;
 
 import com.jooq.jooq.tables.pojos.Country;
 import com.jooq.jooq.tables.pojos.Unrepresentative;
+import com.jooq.model.CountryRepresentativeMapper;
 import com.jooq.model.InnerJoinMapper;
 import com.jooq.service.JooqTutorialService;
 import org.jooq.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -45,5 +44,15 @@ public class JooqTutorialController {
     public List<InnerJoinMapper> getRightJoin() {
 
         return jooqTutorialService.getRightJoin();
+    }
+
+    @PostMapping("/save/country")
+    public int saveCountry(@RequestBody Country country){
+        return jooqTutorialService.saveCountry(country);
+    }
+
+    @PostMapping("/save/countryAndUnrepresentative")
+    public int saveCountry(@RequestBody CountryRepresentativeMapper countryRepresentativeMapper){
+        return jooqTutorialService.saveCountryThenSaveUnrepresentative(countryRepresentativeMapper.getCountry(), countryRepresentativeMapper.getUnrepresentative());
     }
 }
