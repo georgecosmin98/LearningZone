@@ -5,6 +5,7 @@ import Comparator.PlayerRankingComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -23,6 +24,7 @@ public class Main {
         Collections.sort(footballTeam);
         System.out.println("After Sorting : " + footballTeam);
 
+//        Using interface
         PlayerRankingComparator playerComparator = new PlayerRankingComparator();
         Collections.sort(footballTeam, playerComparator);
         System.out.println("After PlayerRankingSorting : " + footballTeam);
@@ -34,5 +36,21 @@ public class Main {
         PlayerNameComparator playerNameComparator = new PlayerNameComparator();
         Collections.sort(footballTeam, playerNameComparator);
         System.out.println("After PlayerNameComparator : " + footballTeam);
+
+//        Using lambda
+        Comparator<Player> byRanking = Comparator
+                .comparing(Player::getRanking);
+        Collections.sort(footballTeam, byRanking);
+        System.out.println("After Lambda byRanking : " + footballTeam);
+
+        Comparator<Player> byAge = Comparator
+                .comparing(Player::getAge);
+        Collections.sort(footballTeam, byAge);
+        System.out.println("After Lambda byAge : " + footballTeam);
+
+        Comparator<Player> byName = Comparator
+                .comparing(Player::getName);
+        Collections.sort(footballTeam, byName);
+        System.out.println("After Lambda byName : " + footballTeam);
     }
 }
