@@ -1,4 +1,4 @@
-package com.challanges;
+package com.challenges;
 
 public class Utilities {
 

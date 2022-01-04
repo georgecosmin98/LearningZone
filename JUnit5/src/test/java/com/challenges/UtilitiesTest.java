@@ -1,4 +1,4 @@
-package com.challanges;
+package com.challenges;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class UtilitiesTest {
+public class UtilitiesTest {
 
     private static Utilities util;
 
@@ -44,10 +44,6 @@ class UtilitiesTest {
     @MethodSource("provideArgumentsForRemovePairs")
     void removePairs_parametrized(String actual, String expected) {
         // I put all this asserts into this method just for simplicity
-        assertEquals(expected, util.removePairs(actual));
-        assertEquals(expected, util.removePairs(actual));
-        assertEquals(expected, util.removePairs(actual));
-        assertEquals(expected, util.removePairs(actual));
         assertEquals(expected, util.removePairs(actual));
     }
 
