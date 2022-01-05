@@ -15,12 +15,13 @@ public class BenchmarkZone {
 
     public static void main(String[] args) {
 
-        List<Integer> myList = generator(60000000);
+        List<Integer> myList = generator(60_000_000);
         int index1 = 0;
         int index2 = 0;
         int index3 = 0;
         int index4 = 0;
         int index5 = 0;
+
 // For Each
         Instant start1 = Instant.now();
         for (Integer i : myList) {
