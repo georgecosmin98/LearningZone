@@ -60,7 +60,7 @@ public class ThreadpoolsAndCallable {
             threads[i] = new ArraySummingThread(array,
                     i * NB_OF_ELEMENTS / NB_OF_THREADS, (i + 1) * NB_OF_ELEMENTS / NB_OF_THREADS);
 
-//            Add threads[i] in threadPool
+//        Add threads[i] in threadPool
             threadPool.execute(threads[i]);
         }
         threadPool.shutdown();
@@ -72,7 +72,7 @@ public class ThreadpoolsAndCallable {
         endTime = System.currentTimeMillis();
         System.out.println("Paralel sum with ThreadPool = " + sum + " computed in " + (endTime - startTime) + " ms");
 
-//            Working with callable
+//        Working with callable
 
         sum = 0;
         startTime = System.currentTimeMillis();

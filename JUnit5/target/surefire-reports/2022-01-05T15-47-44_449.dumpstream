@@ -1,0 +1,6 @@
+# Created at 2022-01-05T15:47:46.105
+Picked up JAVA_TOOL_OPTIONS: -Xbootclasspath/a:"C:\Program Files\Evidian\Enterprise Access Management\wgjpi.jar;C:\Program Files\Evidian\Enterprise Access Management\jaccess.jar" -Djavax.accessibility.assistive_technologies=com.evidian.wg.jpi.WGJPI -Dwgjpi.properties.path="C:\Program Files\Evidian\Enterprise Access Management\wgjpi.properties"
+
+# Created at 2022-01-05T15:47:46.106
+Picked up JAVA_TOOL_OPTIONS: -Xbootclasspath/a:"C:\Program Files\Evidian\Enterprise Access Management\wgjpi.jar;C:\Program Files\Evidian\Enterprise Access Management\jaccess.jar" -Djavax.accessibility.assistive_technologies=com.evidian.wg.jpi.WGJPI -Dwgjpi.properties.path="C:\Program Files\Evidian\Enterprise Access Management\wgjpi.properties"
+
