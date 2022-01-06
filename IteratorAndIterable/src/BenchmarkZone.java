@@ -65,6 +65,7 @@ public class BenchmarkZone {
         }
         Instant end5 = Instant.now();
         System.out.println("While Loop -> " + Duration.between(start5, end5));
+
     }
 
 }
